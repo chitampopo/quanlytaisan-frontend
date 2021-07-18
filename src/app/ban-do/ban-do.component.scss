@@ -1,0 +1,9 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  background: #0275b1;
+  .map {
+    height: 1000px;
+    width: 100%;
+  }
+}

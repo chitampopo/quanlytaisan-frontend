@@ -1,1 +1,56 @@
 /* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '~quill/dist/quill.core.css';
+@import '~quill/dist/quill.bubble.css';
+@import '~quill/dist/quill.snow.css';
+
+html, body { height: 100%;}
+
+.mat-typography {
+  margin: 0;
+}
+
+.mat-button, .mat-raised-button{
+  background: #0275b1 !important;
+  color: white;
+}
+
+.mat-tab-body-wrapper{
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+mat-label{
+  color: #323E48;
+}
+
+.mat-select-value {
+  color: black;
+}
+
+// Background border
+.mat-checkbox .mat-checkbox-frame {
+  border-color: black;
+  background-color: #dddddd
+}
+
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background, .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+  margin-top: 1px;
+  margin-left: 1px;
+  width: 18px;
+  height: 18px;
+}
+
+.mat-checkbox-label {
+  color: black;
+}

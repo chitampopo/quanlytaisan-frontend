@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <div class="left">
+    <mat-selection-list [multiple]="false">
+      <mat-list-option *ngFor="let item of danhSachBatDongSan" [value]="item" (click)="thayDoiToaDo(item)">
+        {{item.ten}}
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div class="right">
+    <google-map [zoom]="zoom" [center]="center" [options]="options" height="800px" width="100%">
+      <map-marker *ngFor="let markerPosition of markerPositions; let i = index;"
+        #marker="mapMarker"
+        [position]="markerPosition"
+        [options]="markerOptions"
+        [title]="danhSachBatDongSan[i].ten"
+        [clickable]="true"
+        (mapClick)="openInfoWindow(marker, i)">
+      </map-marker>
+      <map-info-window>
+        <div>
+          <div>{{ infoTitle }}</div>
+          <div>Giá {{ infoPrice | number}}</div>
+          <div><a [routerLink]="'#'">Xem chi tiết</a></div>
+        </div>
+      </map-info-window>
+    </google-map>
+  </div>
+</div>

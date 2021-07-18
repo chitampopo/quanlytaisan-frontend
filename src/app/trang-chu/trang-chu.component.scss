@@ -1,0 +1,85 @@
+.homepage {
+  height: 100%;
+
+  .sort {
+    margin: 0 26px;
+  }
+
+  .header {
+    background: white;
+    margin: 30px 0px;
+    gap: 12px;
+    button {
+      height: 40px;
+    }
+  }
+
+  .content {
+    background: white;
+    &-header {
+      margin: 0 26px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      button {
+        height: 40px;
+      }
+
+      .header {
+        font-size: 18px;
+        font-weight: 500;
+        color: black;
+      }
+    }
+  }
+
+  .content-wrapper {
+    margin: 0 26px 26px;
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(auto, 300px);
+    column-gap: 20px;
+    row-gap: 1em;
+
+    .item {
+      height: 350px;
+      background: white !important;
+      img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+      }
+      &-content {
+        height: 120px;
+        margin-top: 15px;
+
+        .ten-tai-san {
+          font-weight: 500;
+          line-height: 21px;
+          font-size: 18px;
+          color: #454545;
+        }
+        .gia {
+          margin-top: 5px;
+          font-weight: bold;
+          font-size: 18px;
+          color: #0275b1;
+        }
+        .dia-chi {
+          margin-top: 5px;
+          font-size: 14px;
+          line-height: 19px;
+          color: #454545;
+        }
+        .xem-them {
+          margin-top: 5px;
+          font-size: 18px;
+          line-height: 19px;
+          color: #0275b1;
+        }
+      }
+    }
+  }
+}

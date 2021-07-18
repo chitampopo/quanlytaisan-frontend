@@ -1,0 +1,19 @@
+<div class="homepage">
+  <div class="header">
+    <app-tim-kiem (thayDoiTimKiem)="modelChanged($event)"></app-tim-kiem>
+  </div>
+
+  <div class="content-wrapper">
+    <div class="item" *ngFor="let item of danhSachDongSan">
+      <img [src]="'api/images/' + item.diaChiHinhAnhDaiDien" [alt]="item.diaChiHinhAnhDaiDien">
+      <div class="item-content">
+        <div class="ten-tai-san">{{ item.ten }}</div>
+        <div class="gia">{{ item.gia | number }}</div>
+        <div class="dia-chi">{{ item.diaChi }} </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!danhSachDongSan || danhSachDongSan.length == 0" class="text-center">
+    Không có dữ liệu
+  </div>
+</div>

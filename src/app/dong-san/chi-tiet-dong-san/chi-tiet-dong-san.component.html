@@ -1,0 +1,43 @@
+<div class="wrapper">
+  <div class="header">
+    <div class="name">{{ dongSan.ten }}</div>
+    <div class="location">{{ dongSan.diaChi }} </div>
+  </div>
+  <div class="content">
+    <div class="slider">
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let item of dongSan.danhSachDiaChiHinhAnh">
+          <div class="picsum-img-wrapper">
+            <img [src]="'api/images/' + item" [alt]="item">
+          </div>
+        </ng-template>
+      </ngb-carousel>
+    </div>
+
+    <div class="details">
+      <div class="detail-left">
+        <div class="top">
+          <app-thong-so [title]="'Giá'" [valueNumber]="dongSan.gia" [valueString]="dongSan.giaBangChu"></app-thong-so>
+          <app-thong-so [title]="'Hãng'" [valueString]="dongSan.hangXe"></app-thong-so>
+          <app-thong-so [title]="'Dòng xe'" [valueString]="dongSan.dongXe"></app-thong-so>
+          <app-thong-so [title]="'Năm sản xuất'" [valueString]="dongSan.namSanXuat"></app-thong-so>
+          <app-thong-so [title]="'Số chổ'" [valueString]="dongSan.soChoNgoi"></app-thong-so>
+        </div>
+
+        <div class="bottom mt-5">
+          <div class="title">Mô tả</div>
+          <div class="content">
+            <p class="text-justify">{{ dongSan.ghiChu }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="detail-right">
+        <div class="title">Vị trí</div>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d640.2194504486959!2d105.74287752409016!3d10.02220250025412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sminh%20tue%20villa!5e0!3m2!1svi!2s!4v1623490240318!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+
+  </div>
+</div>

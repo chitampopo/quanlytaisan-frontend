@@ -1,0 +1,45 @@
+.wrapper {
+  .header {
+    width: 100%;
+    color: #323E48;
+    text-align: center;
+    margin: 26px;
+
+    .name {
+      font-size: 30px;
+      margin: 16px;
+    }
+    .location {
+      font-size: 18px;
+    }
+  }
+  .content {
+    ngb-carousel img {
+      height: 500px;
+      object-fit: cover;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 50%;
+    }
+    .details {
+      margin-top: 26px;
+      padding: 0 32px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      color: #323E48;
+      .detail-left {
+        padding: 0 16px;
+        .top {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          row-gap: 20px;
+        }
+
+        .text-justify {
+          text-align: justify;
+        }
+      }
+    }
+  }
+}

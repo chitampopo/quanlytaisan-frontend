@@ -1,0 +1,37 @@
+.homepage-wrapper {
+  background: #E5E5E5;
+  color: black;
+  display: grid;
+  grid-template-rows: 300px auto;
+
+  img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .footer {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    padding: 26px;
+    margin: 16px 0px;
+    color: #323e48;
+  }
+
+  nav {
+    background: white;
+  }
+
+  .mat-tab-link {
+    color: black;
+    background: white;
+  }
+
+  .active-tab {
+    background: #0275b1;
+    color: white;
+    opacity: 1;
+  }
+}

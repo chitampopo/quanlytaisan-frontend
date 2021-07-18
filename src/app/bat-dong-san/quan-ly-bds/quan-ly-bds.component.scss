@@ -1,0 +1,61 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  background: #0275b1;
+  color: white !important;
+
+  .right {
+    background: white;
+    padding: 24px;
+    .example-form {
+      min-width: 150px;
+      max-width: 700px;
+      width: 100%;
+    }
+
+    .example-full-width {
+      width: 100%;
+    }
+
+    td:not(:last-child) {
+      padding-right: 8px;
+    }
+
+
+
+    ::ng-deep {
+      .mat-form-field-outline {
+        color: #ccc !important;
+      }
+      .mat-form-field-outline-thick {
+        color: #ccc !important;
+      }
+
+      .ql-editor {
+        min-height: 200px;
+        border-radius: 0 0 5px 5px !important;
+        color: black;
+      }
+      .ql-toolbar {
+        border-radius: 5px 5px 0 0 !important;
+      }
+
+      .mat-input-element {
+        color: black;
+      }
+
+      ngx-dropzone {
+        // position: relative;
+        // ngx-dropzone-image-preview {
+        //   position: unset !important;
+          img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+          }
+        // }
+      }
+    }
+
+  }
+}

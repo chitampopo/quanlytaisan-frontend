@@ -1,0 +1,9 @@
+<div class="wrapper">
+  <div class="title">
+    {{ title }}
+  </div>
+  <div class="value">
+    <span *ngIf="valueNumber">{{ valueNumber | number }} ({{ valueString }})</span>
+    <span *ngIf="!valueNumber">{{ valueString }}</span>
+  </div>
+</div>

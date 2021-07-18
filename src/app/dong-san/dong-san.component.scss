@@ -1,0 +1,60 @@
+.homepage {
+  height: 100%;
+  // background: rgb(160, 156, 156);
+
+  .header {
+    button {
+      height: 40px;
+    }
+  }
+
+  .content-header {
+    margin: 0 26px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .header {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+  }
+
+  .content-wrapper {
+    margin: 0 26px 26px;
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(auto, 300px);
+    column-gap: 1em;
+    row-gap: 1em;
+
+    .item {
+      height: 300px;
+      background: white !important;
+      img {
+        height: 200px;
+        width: 100%;
+        object-fit: cover;
+      }
+      &-content {
+        margin: 10px;
+
+        .ten-tai-san {
+          font-size: 18px;
+          color: #454545;
+        }
+        .gia {
+          font-weight: bold;
+          font-size: 18px;
+          color: #004dff;
+        }
+        .dia-chi {
+          font-size: 14px;
+          line-height: 19px;
+          color: #454545;
+        }
+      }
+    }
+  }
+}
