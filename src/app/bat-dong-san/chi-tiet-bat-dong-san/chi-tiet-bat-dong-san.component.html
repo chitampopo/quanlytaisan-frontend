@@ -4,7 +4,7 @@
     <div class="location">{{ batDongSan.diaChi }} </div>
   </div>
   <div class="content">
-    <div class="slider">
+    <!-- <div class="slider"> -->
       <ngb-carousel>
         <ng-template ngbSlide *ngFor="let item of batDongSan.danhSachUrlHinhAnh; let i = index;" >
           <div class="picsum-img-wrapper" (click)="open(i)">
@@ -12,7 +12,7 @@
           </div>
         </ng-template>
       </ngb-carousel>
-    </div>
+    <!-- </div> -->
 
     <div class="details">
       <div class="detail-left">

@@ -1,0 +1,61 @@
+<div class="cai-dat-wrapper">
+  <mat-card>
+    <h2>Banner trên</h2>
+    <ngx-dropzone (change)="onSelectHeader($event)">
+      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of headerFiles" [file]="f"
+        [removable]="true" (removed)="onRemoveHeader(f)">
+      </ngx-dropzone-image-preview>
+    </ngx-dropzone>
+    <h2>Banner dưới</h2>
+    <ngx-dropzone (change)="onSelectFooter($event)">
+      <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of footerFiles" [file]="f"
+        [removable]="true" (removed)="onRemoveFooter(f)">
+      </ngx-dropzone-image-preview>
+    </ngx-dropzone>
+  </mat-card>
+  <mat-card>
+    <h2>Màu nền chính</h2>
+    <mat-form-field appearance="outline">
+      <input matInput [ngxMatColorPicker]="pickerMainBg" [value]="mainBackgroundColor">
+      <ngx-mat-color-toggle matSuffix [for]="pickerMainBg"></ngx-mat-color-toggle>
+      <ngx-mat-color-picker #pickerMainBg [color]="mainBgColor"></ngx-mat-color-picker>
+    </mat-form-field>
+    <h2>Màu nền các nút</h2>
+
+    <mat-form-field appearance="outline">
+      <input matInput [ngxMatColorPicker]="pickerButtonBg" [value]="buttonBackgroundColor">
+      <ngx-mat-color-toggle matSuffix [for]="pickerButtonBg"></ngx-mat-color-toggle>
+      <ngx-mat-color-picker #pickerButtonBg [color]="buttonBgColorFC"></ngx-mat-color-picker>
+    </mat-form-field>
+  </mat-card>
+
+  <!--
+
+  <div>
+    <mat-card class="example-result-card">
+      <mat-card-content>
+        <h2>Font size</h2>
+
+        <div class="example-label-container">
+          <label id="example-name-label" class="example-name-label">Max Value</label>
+          <label class="example-value-label">xxx</label>
+        </div>
+        <mat-slider class="example-margin" aria-labelledby="example-name-label">
+        </mat-slider>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div>
+    <mat-card class="zone zone-picker">
+      <h2>Màu nền chính</h2>
+
+      <mat-form-field>
+        <input matInput [ngxMatColorPicker]="picker" [disabled]="disabled">
+        <ngx-mat-color-toggle matSuffix [for]="picker"></ngx-mat-color-toggle>
+        <ngx-mat-color-picker #picker [touchUi]="touchUi" [color]="color"></ngx-mat-color-picker>
+      </mat-form-field>
+    </mat-card>
+  </div> -->
+
+
+</div>

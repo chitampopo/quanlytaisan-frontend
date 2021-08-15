@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@import '@angular/material/prebuilt-themes/pink-bluegrey.css';
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
 @import '~quill/dist/quill.core.css';
 @import '~quill/dist/quill.bubble.css';
 @import '~quill/dist/quill.snow.css';
@@ -53,4 +53,32 @@ mat-label{
 
 .mat-checkbox-label {
   color: black;
+}
+
+
+ngx-dropzone {
+  img {
+    margin-left: 10px;
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+  }
+}
+
+.mat-card {
+  background: white;
+  color: black;
+}
+
+.mat-form-field-outline {
+  color: #ccc !important;
+}
+.mat-form-field-outline-thick {
+  color: #ccc !important;
+}
+.mat-input-element {
+  color: black;
+}
+.mat-tab-header-pagination-chevron {
+  border-color: black;
 }

@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { BatDongSanService } from '../batdongsan.service';
-import { TimNangCaoComponent } from '../tim-nang-cao/tim-nang-cao.component';
+import { SearchNangCao, TimNangCaoComponent } from '../tim-nang-cao/tim-nang-cao.component';
 export class BatDongSan {
   id: number;
   ten: string;
@@ -67,6 +67,22 @@ export class BatDongSanComponent implements OnInit {
   modelChanged(event: any) {
     this.danhSachBatDongSan = this.danhSachBatDongSanDayDu.filter(item => {
       return this.stringToSlug(item.ten).includes(this.stringToSlug(event)) || this.stringToSlug(item.diaChi).includes(this.stringToSlug(event));
+    });
+  }
+
+  sapXep(event: any) {
+    if(event.value === 'low-to-high') {
+      this.danhSachBatDongSan = this.danhSachBatDongSan.sort((a, b) => a.gia - b.gia);
+    } else if(event.value === 'high-to-low') {
+      this.danhSachBatDongSan = this.danhSachBatDongSan.sort((a, b) => b.gia - a.gia);
+    }
+  }
+
+  timKiemNangCao(data: SearchNangCao) {
+    this.danhSachBatDongSan = this.danhSachBatDongSanDayDu.filter(item => {
+      const matchTen = this.stringToSlug(item.ten).includes(this.stringToSlug(data.ten)) || this.stringToSlug(item.diaChi).includes(this.stringToSlug(data.ten));
+      const matchGia = item.gia >= data.giaTu && item.gia <=data.denGia;
+      return matchTen && matchGia;
     });
   }
 

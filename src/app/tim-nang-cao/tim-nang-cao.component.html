@@ -1,4 +1,4 @@
-<h1 mat-dialog-title>Tìm nâng cao</h1>
+<h1 mat-dialog-title>Tìm kiếm nâng cao</h1>
 <div mat-dialog-content class="d-flex flex-column">
   <mat-form-field>
     <mat-label>Tên sản phẩm</mat-label>
@@ -8,12 +8,18 @@
     <mat-label>Địa chỉ</mat-label>
     <input matInput [(ngModel)]="data.diaChi">
   </mat-form-field>
-  <div>
-    <mat-label>Giá tiền</mat-label>
-    <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
-  </div>
+  <mat-form-field>
+    <mat-label>Giá từ</mat-label>
+    <input matInput currencyMask [(ngModel)]="data.giaTu" [options]="{ prefix: '', suffix: ' Đồng', thousands: '.', decimal: ',', precision: 0 }">
+  </mat-form-field>
+  <mat-slider [(ngModel)]="data.giaTu" thumbLabel [displayWith]="formatLabel" tickInterval="100" step="1000000" min="0" max="100000000000" aria-label="units"></mat-slider>
+  <mat-form-field>
+    <mat-label>Đến giá</mat-label>
+    <input matInput currencyMask [(ngModel)]="data.denGia" [options]="{ prefix: '', suffix: ' Đồng', thousands: '.', decimal: ',', precision: 0 }">
+  </mat-form-field>
+  <mat-slider [(ngModel)]="data.denGia" thumbLabel [displayWith]="formatLabel" tickInterval="100" step="1000000" min="0" max="100000000000" aria-label="units"></mat-slider>
 </div>
 <div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
+  <button mat-button (click)="onNoClick()">Hủy</button>
+  <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Tìm kiếm</button>
 </div>

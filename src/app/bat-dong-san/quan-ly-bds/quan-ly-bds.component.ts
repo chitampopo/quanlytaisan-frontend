@@ -9,6 +9,7 @@ import { BatDongSan } from '../bat-dong-san.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { HinhAnhService } from 'src/app/hinh-anh.service';
 import { HttpClient } from '@angular/common/http';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-quan-ly-bds',
@@ -86,6 +87,10 @@ export class QuanLyBdsComponent implements OnInit {
         this.openSnackBar();
         this.handleImages(response.id);
       });
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.danhSachBatDongSanDayDu, event.previousIndex, event.currentIndex);
   }
 
   handleImages(id: number) {

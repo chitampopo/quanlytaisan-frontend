@@ -1,8 +1,9 @@
 .homepage-wrapper {
   background: #E5E5E5;
   color: black;
-  display: grid;
-  grid-template-rows: 300px auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 
   img {
     height: 300px;
@@ -11,12 +12,12 @@
   }
 
   .footer {
+    height: 150px;
+    overflow: hidden;
     text-align: center;
     font-size: 18px;
     font-weight: bold;
     letter-spacing: 0.1em;
-    padding: 26px;
-    margin: 16px 0px;
     color: #323e48;
   }
 

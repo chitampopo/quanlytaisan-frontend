@@ -10,6 +10,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-material-components/color-picker": "^6.0.0",
     "@angular-slider/ngx-slider": "^2.0.3",
     "@angular/animations": "~12.0.3",
     "@angular/cdk": "^12.0.4",
@@ -25,6 +26,7 @@
     "@ng-bootstrap/ng-bootstrap": "^11.0.0-beta.1",
     "@types/heremaps": "3.0.11",
     "bootstrap": "^5.0.1",
+    "ng2-currency-mask": "^11.0.0",
     "ngx-dropzone": "^3.0.0",
     "ngx-lightbox": "^2.4.1",
     "ngx-quill": "^14.1.1",

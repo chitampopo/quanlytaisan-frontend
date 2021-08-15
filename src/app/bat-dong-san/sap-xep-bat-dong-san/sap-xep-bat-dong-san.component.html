@@ -1,0 +1,39 @@
+<div class="wrapper">
+  <div class="left">
+    <mat-selection-list [multiple]="false">
+      <mat-list-option (click)="chooseBDS()">
+        <span><mat-icon>apartment</mat-icon>Quản lý BDS</span>
+      </mat-list-option>
+      <mat-list-option (click)="chooseDS()">
+        <span><mat-icon>commute</mat-icon>Quản lý ĐS</span>
+      </mat-list-option>
+    </mat-selection-list>
+  </div>
+  <div class="right">
+    <div class="example-container">
+      <h2>Hiển thị ở trang chủ</h2>
+
+      <div cdkDropList #homepageList="cdkDropList" [cdkDropListData]="homepage" [cdkDropListConnectedTo]="[fullList, hideList]"
+        class="example-list" (cdkDropListDropped)="drop($event)" (cdkDragEnded)="updateHomepage()" [cdkDropListEnterPredicate]="limiterPredicate">
+        <div class="example-box" *ngFor="let item of homepage" cdkDrag>{{ map.get(item.id) }}</div>
+      </div>
+    </div>
+
+    <div class="example-container">
+      <h2>Danh sách còn lại</h2>
+
+      <div cdkDropList #fullList="cdkDropList" [cdkDropListData]="full" [cdkDropListConnectedTo]="[homepageList, hideList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of full" cdkDrag>{{ map.get(item.id) }}</div>
+      </div>
+    </div>
+    <div class="example-container">
+      <h2>Đang ẩn</h2>
+
+      <div cdkDropList #hideList="cdkDropList" [cdkDropListData]="hide" [cdkDropListConnectedTo]="[fullList, homepageList]"
+        class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of hide" cdkDrag>{{ map.get(item.id) }}</div>
+      </div>
+    </div>
+  </div>
+</div>

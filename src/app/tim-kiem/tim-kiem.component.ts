@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { TimNangCaoComponent } from '../tim-nang-cao/tim-nang-cao.component';
+import { SearchNangCao, TimNangCaoComponent } from '../tim-nang-cao/tim-nang-cao.component';
 
 @Component({
   selector: 'app-tim-kiem',
@@ -12,7 +12,8 @@ export class TimKiemComponent implements OnInit {
   value = "Sản phẩm muốn tìm";
 
   @Output() thayDoiTimKiem = new EventEmitter<string>();
-
+  @Output() thayDoiSapXep = new EventEmitter<string>();
+  @Output() thayDoiTimKiemNangCao = new EventEmitter<SearchNangCao>();
   constructor(public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -22,13 +23,19 @@ export class TimKiemComponent implements OnInit {
     this.thayDoiTimKiem.emit(event);
   }
 
+  sortChange(event: any) {
+    this.thayDoiSapXep.emit(event);
+  }
+
   openDialog() {
     const dialogRef = this.dialog.open(TimNangCaoComponent, {
       width: '50%',
-      data: {ten: '', diaChi: ''} });
+      data: new SearchNangCao()
+    });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      console.log(JSON.stringify(result));
+      this.thayDoiTimKiemNangCao.emit(result);
     });
   }
 }

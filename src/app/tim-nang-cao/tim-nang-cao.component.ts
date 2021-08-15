@@ -3,36 +3,40 @@ import { BatDongSan } from '../bat-dong-san/bat-dong-san.component';
 import { Options, LabelType } from '@angular-slider/ngx-slider';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+
+export class SearchNangCao {
+  ten: string = '';
+  diaChi: string = '';
+  giaTu: number = 0;
+  denGia: number = 0;
+}
+
 @Component({
   templateUrl: './tim-nang-cao.component.html',
   styleUrls: ['./tim-nang-cao.component.scss'],
 })
 export class TimNangCaoComponent implements OnInit {
-  minValue: number = 100;
-  maxValue: number = 400;
-  options: Options = {
-    floor: 0,
-    ceil: 500,
-    translate: (value: number, label: LabelType): string => {
-      switch (label) {
-        case LabelType.Low:
-          return '<b>Thấp nhất:</b> $' + value;
-        case LabelType.High:
-          return '<b>Cao nhất:</b> $' + value;
-        default:
-          return '$' + value;
-      }
-    },
-  };
+  minValue: number = 1; //1tr
+  maxValue: number = 100000000000; //100 tỷ
 
   constructor(
     public dialogRef: MatDialogRef<TimNangCaoComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: BatDongSan
+    @Inject(MAT_DIALOG_DATA) public data: SearchNangCao
   ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
   }
 
-  ngOnInit(): void {}
+  formatLabel(value: number) {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'tỷ';
+    }
+
+    return value;
+  }
+
+  ngOnInit(): void {
+    this.data.denGia = 100000000000;
+  }
 }

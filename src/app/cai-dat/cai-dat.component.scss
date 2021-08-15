@@ -1,0 +1,23 @@
+
+:host {
+  ::ng-deep {
+    .cai-dat-wrapper {
+      padding: 26px 36px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 1em;
+      row-gap: 1em;
+
+      ngx-dropzone {
+        img {
+          width: 100%;
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+      }
+      ngx-dropzone-image-preview {
+        width: 100%;
+      }
+    }
+  }
+}

@@ -36,6 +36,13 @@ import { QuillModule } from 'ngx-quill';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { GooglePlacesDirective } from './google-places.directive';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { CaiDatComponent } from './cai-dat/cai-dat.component';
+import {MatSliderModule} from '@angular/material/slider';
+import {MatCardModule} from '@angular/material/card';
+import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } from '@angular-material-components/color-picker';
+import {DragDropModule} from '@angular/cdk/drag-drop';
+import { SapXepBatDongSanComponent } from './bat-dong-san/sap-xep-bat-dong-san/sap-xep-bat-dong-san.component';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 @NgModule({
   declarations: [
@@ -53,7 +60,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     LoginComponent,
     TimKiemComponent,
     GooglePlacesDirective,
-  ],
+    CaiDatComponent,
+    SapXepBatDongSanComponent
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -69,7 +78,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatIconModule,
     MatSelectModule,
     MatListModule,
+    MatSliderModule,
+    MatCardModule,
     MatDialogModule,
+    DragDropModule,
     NgxSliderModule,
     GoogleMapsModule,
     HttpClientModule,
@@ -77,6 +89,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatAutocompleteModule,
     LightboxModule,
     MatSnackBarModule,
+    NgxMatColorPickerModule,
+    CurrencyMaskModule,
     QuillModule.forRoot({
       modules: {
         syntax: false,
@@ -92,7 +106,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     }),
     MatCheckboxModule,
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_COLOR_FORMATS, useValue: NGX_MAT_COLOR_FORMATS }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
