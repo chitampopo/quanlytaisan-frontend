@@ -1,15 +1,15 @@
 <div class="homepage">
   <div class="header">
-    <app-tim-kiem (thayDoiTimKiem)="modelChanged($event)" (thayDoiSapXep)="sapXep($event)" (thayDoiTimKiemNangCao)="timKiemNangCao($event)"></app-tim-kiem>
+    <app-tim-kiem (thayDoiTimKiem)="onThayDoiKeyword($event)" (thayDoiSapXep)="sapXep($event)" (thayDoiTimKiemNangCao)="timKiemNangCao($event)"></app-tim-kiem>
   </div>
 
   <div class="content">
     <div class="content-header d-flex flex-row justify-content-between align-items-center">
       <div class="header">Bất động sản</div>
-      <button mat-raised-button color="primary">Xem tất cả ({{danhSachBatDongSan.length}})</button>
+      <button mat-raised-button color="primary" (click)="navigate('bat-dong-san')">Xem tất cả ({{danhSachBatDongSan.length}})</button>
     </div>
     <div class="content-wrapper">
-      <div class="item-wrapper" *ngFor="let item of danhSachBatDongSan; let i=index" >
+      <div class="item-wrapper" *ngFor="let item of (keyword.length == 0 ? listBSDUuTien : danhSachBatDongSan); let i=index" >
         <div class="item cursor-pointer" *ngIf="i < soLuongToiDa" [routerLink]="'/bat-dong-san/' + item.id">
           <img [src]="'api/images/' + item.urlHinhDaiDien" [alt]="item.urlHinhDaiDien">
           <div class="item-content d-flex flex-column">
@@ -21,7 +21,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="!danhSachBatDongSan || danhSachBatDongSan.length == 0" class="text-center">
+    <div *ngIf="keyword.length == 0 ? listBSDUuTien.length == 0 : danhSachBatDongSan.length == 0" class="text-center">
       Không có dữ liệu
     </div>
   </div>
@@ -29,10 +29,10 @@
   <div class="content">
     <div class="content-header d-flex flex-row justify-content-between align-items-center">
       <div class="header">Động sản</div>
-      <button mat-raised-button color="primary">Xem tất cả ({{danhSachDongSan.length}})</button>
+      <button mat-raised-button color="primary" (click)="navigate('dong-san')">Xem tất cả ({{danhSachDongSan.length}})</button>
     </div>
     <div class="content-wrapper">
-      <div class="item-wrapper" *ngFor="let item of danhSachDongSan; let i=index">
+      <div class="item-wrapper" *ngFor="let item of (keyword.length == 0 ? danhSachDongSanUuTien : danhSachDongSan); let i=index">
         <div class="item cursor-pointer" *ngIf="i < soLuongToiDa" [routerLink]="'/dong-san/' + item.id">
           <img [src]="'api/images/' + item.diaChiHinhAnhDaiDien" [alt]="item.diaChiHinhAnhDaiDien">
           <div class="item-content d-flex flex-column">
@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="!danhSachDongSan || danhSachDongSan.length == 0" class="text-center">
+    <div *ngIf="keyword.length == 0 ? danhSachDongSanUuTien.length == 0 : danhSachDongSan.length == 0" class="text-center">
       Không có dữ liệu
     </div>
   </div>

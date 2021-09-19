@@ -1,26 +1,28 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { BatDongSanService } from 'src/app/batdongsan.service';
-import { BatDongSan } from '../bat-dong-san.component';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { PizzaPartyComponent } from 'src/app/bat-dong-san/quan-ly-bds/quan-ly-bds.component';
+import { DongSanService } from 'src/app/dongsan.service';
 import { HinhAnhService } from 'src/app/hinh-anh.service';
-import { HttpClient } from '@angular/common/http';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { DongSan } from '../dong-san.component';
 
 @Component({
-  selector: 'app-quan-ly-bds',
-  templateUrl: './quan-ly-bds.component.html',
-  styleUrls: ['./quan-ly-bds.component.scss'],
+  selector: 'app-quan-ly-ds',
+  templateUrl: './quan-ly-ds.component.html',
+  styleUrls: ['./quan-ly-ds.component.scss']
 })
-export class QuanLyBdsComponent implements OnInit {
+export class QuanLyDsComponent implements OnInit {
+
   value = 'Sản phẩm muốn tìm';
   keyword: string = '';
-  danhSachBatDongSanDayDu: BatDongSan[] = [];
-  selectBds: BatDongSan;
+  danhSachDongSanDayDu: DongSan[] = [];
+  selectDs: DongSan;
   files: File[] = [];
   otherFiles: File[] = [];
   mapCenter: google.maps.LatLngLiteral = {
@@ -43,11 +45,11 @@ export class QuanLyBdsComponent implements OnInit {
     private router: Router,
     private httpClient: HttpClient,
     public dialog: MatDialog,
-    private batDongSanService: BatDongSanService,
+    private dongSanService: DongSanService,
     private hinhAnhService: HinhAnhService,
     private _snackBar: MatSnackBar
   ) {
-    this.titleService.setTitle('Quản lý BDS');
+    this.titleService.setTitle('Quản lý ĐS');
   }
 
   ngOnInit(): void {
@@ -56,99 +58,99 @@ export class QuanLyBdsComponent implements OnInit {
       ten: new FormControl(null, Validators.required),
       gia: new FormControl(null, Validators.required),
       diaChi: new FormControl(null, Validators.required),
-      huong: new FormControl(null),
-      mucDichSuDung: new FormControl(null),
+      hangXe: new FormControl(null),
+      dongXe: new FormControl(null),
+      namSanXuat: new FormControl(null),
+      soChoNgoi: new FormControl(null),
       urlHinhDaiDien: new FormControl(null),
       danhSachUrlHinhAnh: new FormControl(null),
       giaBangChu: new FormControl(null),
       ghiChu: new FormControl(null),
       viTriGoogleMap: new FormControl(null)
     });
-    this.batDongSanService
-      .getAllBatDongSan()
-      .subscribe((all) => (this.danhSachBatDongSanDayDu = all));
+    this.dongSanService
+      .getAllDongSan()
+      .subscribe((all) => (this.danhSachDongSanDayDu = all));
   }
 
   onSubmit() {
-    const bds: BatDongSan = {
+    const bds: DongSan = {
       id: this.myForm.controls.id.value,
       ten: this.myForm.controls.ten.value,
       diaChi: this.myForm.controls.diaChi.value,
       gia: this.myForm.controls.gia.value,
-      huong: this.myForm.controls.huong.value,
-      mucDichSuDung: this.myForm.controls.mucDichSuDung.value,
       giaBangChu: this.myForm.controls.giaBangChu.value,
       ghiChu: this.myForm.controls.ghiChu.value,
-      viTriGoogleMap: this.myForm.controls.viTriGoogleMap.value
+      dongXe: this.myForm.controls.dongXe.value,
+      hangXe: this.myForm.controls.hangXe.value,
+      namSanXuat: this.myForm.controls.namSanXuat.value,
+      soChoNgoi: this.myForm.controls.soChoNgoi.value,
     };
-    this.batDongSanService
-      .updateBatDongSan(bds)
-      .subscribe((response: BatDongSan) => {
+    this.dongSanService
+      .updateDongSan(bds)
+      .subscribe((response: DongSan) => {
         this.openSnackBar();
         this.handleImages(response.id);
       });
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.danhSachBatDongSanDayDu, event.previousIndex, event.currentIndex);
+    moveItemInArray(this.danhSachDongSanDayDu, event.previousIndex, event.currentIndex);
   }
 
   handleImages(id: string) {
-    this.hinhAnhService.cleanFolder('batdongsan', id).subscribe(() => {
+    this.hinhAnhService.cleanFolder('dongsan', id).subscribe(() => {
       //Hình đại diện
-      this.hinhAnhService.uploadHinhAnhDaiDien(this.files[0], 'batdongsan', id).subscribe();
+      this.hinhAnhService.uploadHinhAnhDaiDien(this.files[0], 'dongsan', id).subscribe();
       //Các hình khác
       this.otherFiles.forEach((file) => {
-        this.hinhAnhService.uploadHinhAnhKhac(file, 'batdongsan', id).subscribe();
+        this.hinhAnhService.uploadHinhAnhKhac(file, 'dongsan', id).subscribe();
       });
     })
   }
 
-  onSelectBds(item: BatDongSan) {
+  onSelectBds(item: DongSan) {
     this.files = [];
     this.otherFiles = [];
-    this.selectBds = item;
+    this.selectDs = item;
     this.thayDoiToaDo(item);
     this.fillDataVaoForm(item);
   }
 
-  thayDoiToaDo(bds: BatDongSan) {
-    const viTri = bds.viTriGoogleMap.split(',');
-    const lat: number = Number(viTri[0].trim());
-    const lng: number = Number(viTri[1].trim());
-    this.mapCenter = { lat, lng };
-    this.mapMarkerPosition = { lat, lng };
+  thayDoiToaDo(bds: DongSan) {
   }
 
   setAddress(address: google.maps.places.PlaceResult) {
     this.myForm.controls.diaChi.setValue(address.formatted_address);
     const lat = address.geometry!.location.lat();
     const lng = address.geometry!.location.lng();
-    this.myForm.controls.viTriGoogleMap.setValue(lat + ", " + lng);
+    this.myForm.controls.viTriGoogroutingleMap.setValue(lat + ", " + lng);
     this.mapCenter = { lat, lng };
     this.mapMarkerPosition = { lat, lng };
   }
 
-  fillDataVaoForm(bds: BatDongSan) {
+  fillDataVaoForm(bds: DongSan) {
     this.myForm.controls.id.setValue(bds.id);
     this.myForm.controls.ten.setValue(bds.ten);
     this.myForm.controls.gia.setValue(bds.gia);
     this.myForm.controls.giaBangChu.setValue(bds.giaBangChu);
     this.myForm.controls.ghiChu.setValue(bds.ghiChu);
     this.myForm.controls.diaChi.setValue(bds.diaChi);
-    this.myForm.controls.viTriGoogleMap.setValue(bds.viTriGoogleMap);
     this.myForm.controls.id.setValue(bds.id);
-    this.myForm.controls.huong.setValue(bds.huong);
-    this.myForm.controls.mucDichSuDung.setValue(bds.mucDichSuDung);
-    if (bds.urlHinhDaiDien) {
-      this.getImage(bds.urlHinhDaiDien).subscribe(data => {
-        var filename = bds.urlHinhDaiDien!.replace(/^.*[\\\/]/, '')
+    this.myForm.controls.hangXe.setValue(bds.hangXe);
+    this.myForm.controls.dongXe.setValue(bds.dongXe);
+    this.myForm.controls.namSanXuat.setValue(bds.namSanXuat);
+    this.myForm.controls.soChoNgoi.setValue(bds.soChoNgoi);
+    this.myForm.controls.ghiChu.setValue(bds.ghiChu);
+    if (bds.diaChiHinhAnhDaiDien) {
+      this.getImage(bds.diaChiHinhAnhDaiDien).subscribe(data => {
+        var filename = bds.diaChiHinhAnhDaiDien!.replace(/^.*[\\\/]/, '')
         const file = new File([data], filename, { type: data.type });
         this.files.push(file);
       });
     }
-    if (bds.danhSachUrlHinhAnh) {
-      bds.danhSachUrlHinhAnh.forEach(url => {
+    if (bds.danhSachDiaChiHinhAnh) {
+      bds.danhSachDiaChiHinhAnh.forEach(url => {
         this.getImage(url).subscribe(data => {
           var filename = url.replace(/^.*[\\\/]/, '')
           const file = new File([data], filename, { type: data.type });
@@ -189,17 +191,5 @@ export class QuanLyBdsComponent implements OnInit {
       duration: 3000,
     });
   }
-}
 
-@Component({
-  selector: 'updated-bds',
-  templateUrl: './updated-bds.html',
-  styles: [
-    `
-      .example-pizza-party {
-        color: hotpink;
-      }
-    `,
-  ],
-})
-export class PizzaPartyComponent {}
+}

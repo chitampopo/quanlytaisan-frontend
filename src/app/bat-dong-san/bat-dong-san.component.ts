@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 import { BatDongSanService } from '../batdongsan.service';
 import { SearchNangCao, TimNangCaoComponent } from '../tim-nang-cao/tim-nang-cao.component';
 export class BatDongSan {
-  id: number;
+  id: string;
   ten: string;
   gia: number;
   huong: string;

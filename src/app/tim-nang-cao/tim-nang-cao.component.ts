@@ -7,8 +7,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class SearchNangCao {
   ten: string = '';
   diaChi: string = '';
-  giaTu: number = 0;
-  denGia: number = 0;
+  giaTu: number;
+  denGia: number;
 }
 
 @Component({
@@ -37,6 +37,6 @@ export class TimNangCaoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.data.denGia = 100000000000;
+    // this.data.denGia = 100000000000;
   }
 }

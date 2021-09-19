@@ -17,4 +17,8 @@ export class DongSanService {
   getDongSan(id: number): Observable<DongSan> {
     return this.http.get<DongSan>(`/api/dong-san/${id}`);
   }
+
+  updateDongSan(dongSan: DongSan): Observable<DongSan> {
+    return this.http.post<DongSan>('/api/dong-san', dongSan);
+  }
 }

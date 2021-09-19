@@ -1,34 +1,11 @@
 .centeredPrompt {
-  /**
-   * Lay out the children of this container with
-   * flexbox.
-   */
   display: flex;
-
-  /**
-   * Rotate the main axis so that the children
-   * are laid out vertically, the same as in the
-   * above "Side bar" example.
-   */
   flex-direction: column;
-
-  /**
-   * Instead of pushing the children apart, as in
-   * previous examples, we will group them together
-   * in the center of their container.
-   */
   justify-content: center;
-
-  /**
-   * Align the children in the center, along
-   * the main axis. Because the direction is
-   * "column" this has a similar effect as setting
-   * text-align: center.
-   */
   align-items: center;
-
-  min-height: 300px;
-  padding: 10px;
+  min-height: 400px;
+  width: 30%;
+  margin: 0 auto;
 
   .logo {
     width: 45px;
@@ -43,74 +20,8 @@
     color: #96a7af;
   }
 
-  ion-item {
-    --highlight-color-valid: transparent;
-    --highlight-color-invalid: transparent;
-    --highlight-color-focused: transparent;
+  .error {
+    color: red;
+
   }
-
-  .user {
-    ion-icon {
-      padding: 4px;
-      width: 28px;
-      height: 38px;
-      background: #625b39;
-      border-radius: 12px;
-      color: #ffc542;
-    }
-    ion-label {
-      color: #96A7AF;;
-    }
-  }
-
-  .password {
-    ion-icon {
-      padding: 4px;
-      width: 28px;
-      height: 38px;
-      background: #623A42;
-      border-radius: 12px;
-      color: #FF575F;
-    }
-    ion-label {
-      color: #96A7AF;;
-    }
-  }
-
-  .submit ion-button {
-    margin-top: 40px;
-    width: 100%;
-    height: 60px;
-    font-size: 16px;
-    --background: linear-gradient(180deg, #40DF9F 0%, #3ED598 100%);
-    --box-shadow: 0px 2px 4px rgba(15, 218, 137, 0.3);
-    --border-radius: 12px;
-  }
-}
-
-.centeredPrompt__item + .centeredPrompt__item {
-  margin-top: 5px;
-}
-
-.centeredPromptIcon {
-  font-size: 60px;
-  line-height: 0;
-}
-
-.centeredPromptLabel {
-  color: #86969c;
-  font-size: 30px;
-  font-weight: 700;
-  text-align: center;
-}
-
-.centeredPromptDetails {
-  color: #86969c;
-  font-size: 16px;
-  margin-bottom: 10px;
-  text-align: center;
-}
-
-.icon {
-  color: #bcd2da;
 }

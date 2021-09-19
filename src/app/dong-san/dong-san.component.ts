@@ -18,8 +18,8 @@ export interface DongSan {
   gia: number;
   giaBangChu: string;
   ghiChuGia?: string;
-  diaChiHinhAnhDaiDien: string;
-  danhSachDiaChiHinhAnh: string[];
+  diaChiHinhAnhDaiDien?: string;
+  danhSachDiaChiHinhAnh?: string[];
 }
 
 @Component({

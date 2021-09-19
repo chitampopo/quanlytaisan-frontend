@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 export class SortItem {
-  id: number;
+  id: string;
 }
 export class SortResult {
   homepage: SortItem[];

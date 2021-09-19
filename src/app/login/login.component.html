@@ -1,23 +1,19 @@
 <div class="centeredPrompt">
-  <div>
-    <div class="logo"></div>
-    <h1>Xin chào</h1>
-    <h3>Đăng nhập để tiếp tục</h3>
-    <div class="user">
-      <span position="floating">Tài khoản</span>
-      <input type="text"/>
-      <span name="person" slot="start"></span>
+  <h1>Xin chào admin</h1>
+  <h3>Đăng nhập để tiếp tục</h3>
+
+  <form class="d-flex flex-column w-100" [formGroup]="loginForm" (submit)="submitLogin()" (keyup.enter)="submitLogin()">
+    <mat-form-field class="example-full-width w-100" appearance="fill">
+      <mat-label>Tài khoản</mat-label>
+      <input matInput formControlName="username" required="required" type="text">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Mật khẩu</mat-label>
+      <input matInput type="password" formControlName="password" required="required">
+    </mat-form-field>
+    <div mat-dialog-actions align="end">
+      <button mat-flat-button color="primary">Đăng nhập</button>
     </div>
-    <div class="password">
-      <span position="floating">Mật khẩu</span>
-      <input type="password"/>
-      <span name="medical" slot="start"></span>
-    </div>
-    <div class="submit">
-      <button (click)="submitLogin()">
-        Đăng nhập
-        <span>name="arrow-forward"></span>
-      </button>
-    </div>
-  </div>
+    <span *ngIf="isShowLoginFailMessage" class="error">Đăng nhập thất bại, xin thử lại</span>
+  </form>
 </div>

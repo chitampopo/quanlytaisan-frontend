@@ -2,9 +2,9 @@
   <div class="left">
     <mat-selection-list [multiple]="false">
       <mat-list-option>
-        <span>+ Thêm mới BDS</span>
+        <span>+ Thêm mới DS</span>
       </mat-list-option>
-      <mat-list-option *ngFor="let item of danhSachBatDongSanDayDu" [value]="item" (click)="onSelectBds(item)">
+      <mat-list-option *ngFor="let item of danhSachDongSanDayDu" [value]="item" (click)="onSelectBds(item)">
         {{item.ten}}
       </mat-list-option>
     </mat-selection-list>
@@ -37,14 +37,14 @@
         <tr>
           <td>
             <mat-form-field appearance="outline" class="example-full-width">
-              <mat-label>Hướng</mat-label>
-              <input matInput formControlName="huong">
+              <mat-label>Hãng xe</mat-label>
+              <input matInput formControlName="hangXe">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field appearance="outline" class="example-full-width">
-              <mat-label>Mục đích sử dụng</mat-label>
-              <input matInput formControlName="mucDichSuDung">
+              <mat-label>Dòng xe</mat-label>
+              <input matInput formControlName="dongXe">
             </mat-form-field>
           </td>
         </tr>
@@ -58,31 +58,11 @@
         <input matInput formControlName="diaChi" id="diaChi" google-place (onSelect)="setAddress($event)">
       </mat-form-field>
 
-      <!-- <mat-form-field class="example-full-width" appearance="fill">
-        <mat-label>Địa chỉ auto</mat-label>
-        <input type="text" id="pac-input" matInput [matAutocomplete]="auto">
-        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-          <mat-option>1</mat-option>
-          <mat-option>2</mat-option>
-          <mat-option>3</mat-option>
-          <mat-option>4</mat-option>
-          <mat-option>5</mat-option>
-          <mat-option>6</mat-option>
-        </mat-autocomplete>
-      </mat-form-field> -->
-
-      <div class="mat-form-field-wrapper">
-        <google-map id="map" [center]="mapCenter" height="400px" width="100%">
-          <map-marker [options]="markerOptions" [position]="mapMarkerPosition"
-            [title]="selectBds?.ten ? selectBds.ten: ''"></map-marker>
-        </google-map>
-      </div>
       <div class="mat-form-field-wrapper">
         <ngx-dropzone (change)="onSelect($event)">
           <ngx-dropzone-label>Hình đại diện</ngx-dropzone-label>
           <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of files" [file]="f"
             [removable]="true" (removed)="onRemove(f)">
-            <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
           </ngx-dropzone-image-preview>
         </ngx-dropzone>
       </div>
@@ -91,7 +71,6 @@
           <ngx-dropzone-label>Hình trong album</ngx-dropzone-label>
           <ngx-dropzone-image-preview ngProjectAs="ngx-dropzone-preview" *ngFor="let f of otherFiles" [file]="f"
             [removable]="true" (removed)="onRemoveOtherFiles(f)">
-            <!-- <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label> -->
           </ngx-dropzone-image-preview>
         </ngx-dropzone>
       </div>

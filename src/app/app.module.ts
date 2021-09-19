@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MenuComponent } from './menu/menu.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTabsModule } from '@angular/material/tabs';
 import { TrangChuComponent } from './trang-chu/trang-chu.component';
@@ -43,11 +42,11 @@ import { MAT_COLOR_FORMATS, NgxMatColorPickerModule, NGX_MAT_COLOR_FORMATS } fro
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { SapXepBatDongSanComponent } from './bat-dong-san/sap-xep-bat-dong-san/sap-xep-bat-dong-san.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { QuanLyDsComponent } from './dong-san/quan-ly-ds/quan-ly-ds.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
     TrangChuComponent,
     BatDongSanComponent,
     DongSanComponent,
@@ -61,7 +60,8 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     TimKiemComponent,
     GooglePlacesDirective,
     CaiDatComponent,
-    SapXepBatDongSanComponent
+    SapXepBatDongSanComponent,
+    QuanLyDsComponent
    ],
   imports: [
     BrowserModule,

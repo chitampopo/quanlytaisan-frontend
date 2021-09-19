@@ -2,22 +2,22 @@
 <div mat-dialog-content class="d-flex flex-column">
   <mat-form-field>
     <mat-label>Tên sản phẩm</mat-label>
-    <input matInput [(ngModel)]="data.ten">
+    <input matInput [(ngModel)]="data.ten" placeholder="Biệt thự...">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Địa chỉ</mat-label>
-    <input matInput [(ngModel)]="data.diaChi">
+    <input matInput [(ngModel)]="data.diaChi" placeholder="Cần Thơ">
   </mat-form-field>
   <mat-form-field>
     <mat-label>Giá từ</mat-label>
-    <input matInput currencyMask [(ngModel)]="data.giaTu" [options]="{ prefix: '', suffix: ' Đồng', thousands: '.', decimal: ',', precision: 0 }">
+    <input matInput currencyMask [(ngModel)]="data.giaTu" [options]="{ prefix: '', suffix: ' Đồng', thousands: '.', decimal: ',', precision: 0 }" >
   </mat-form-field>
-  <mat-slider [(ngModel)]="data.giaTu" thumbLabel [displayWith]="formatLabel" tickInterval="100" step="1000000" min="0" max="100000000000" aria-label="units"></mat-slider>
+  <!-- <mat-slider [(ngModel)]="data.giaTu" thumbLabel [displayWith]="formatLabel" tickInterval="100" step="1000000" min="0" max="100000000000" aria-label="units"></mat-slider> -->
   <mat-form-field>
     <mat-label>Đến giá</mat-label>
     <input matInput currencyMask [(ngModel)]="data.denGia" [options]="{ prefix: '', suffix: ' Đồng', thousands: '.', decimal: ',', precision: 0 }">
   </mat-form-field>
-  <mat-slider [(ngModel)]="data.denGia" thumbLabel [displayWith]="formatLabel" tickInterval="100" step="1000000" min="0" max="100000000000" aria-label="units"></mat-slider>
+  <!-- <mat-slider [(ngModel)]="data.denGia" thumbLabel [displayWith]="formatLabel" tickInterval="100" step="1000000" min="0" max="100000000000" aria-label="units"></mat-slider> -->
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Hủy</button>
