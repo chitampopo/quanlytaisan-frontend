@@ -3,13 +3,15 @@
     <app-tim-kiem (thayDoiTimKiem)="modelChanged($event)" (thayDoiSapXep)="sapXep($event)" (thayDoiTimKiemNangCao)="timKiemNangCao($event)"></app-tim-kiem>
   </div>
 
-  <div class="content-wrapper">
-    <div class="item" *ngFor="let item of danhSachDongSan">
-      <img [src]="'api/images/' + item.diaChiHinhAnhDaiDien" [alt]="item.diaChiHinhAnhDaiDien">
-      <div class="item-content">
-        <div class="ten-tai-san">{{ item.ten }}</div>
-        <div class="gia">{{ item.gia | number }}</div>
-        <div class="dia-chi">{{ item.diaChi }} </div>
+  <div class="content-section-wrapper">
+    <div class="item-wrapper" *ngFor="let item of danhSachDongSan">
+      <div class="item cursor-pointer">
+        <img [src]="'api/images/' + item.diaChiHinhAnhDaiDien" [alt]="item.diaChiHinhAnhDaiDien">
+        <div class="item-content">
+          <div class="ten-tai-san">{{ item.ten }}</div>
+          <div class="gia">{{ item.gia | number }}</div>
+          <div class="dia-chi">{{ item.diaChi }} </div>
+        </div>
       </div>
     </div>
   </div>

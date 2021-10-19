@@ -3,18 +3,18 @@
     <app-tim-kiem (thayDoiTimKiem)="onThayDoiKeyword($event)" (thayDoiSapXep)="sapXep($event)" (thayDoiTimKiemNangCao)="timKiemNangCao($event)"></app-tim-kiem>
   </div>
 
-  <div class="content">
-    <div class="content-header d-flex flex-row justify-content-between align-items-center">
-      <div class="header">Bất động sản</div>
+  <div class="content-section mb-5">
+    <div class="content-section-header d-flex flex-row justify-content-between align-items-center">
+      <div class="section-header">Bất động sản</div>
       <button mat-raised-button color="primary" (click)="navigate('bat-dong-san')">Xem tất cả ({{danhSachBatDongSan.length}})</button>
     </div>
-    <div class="content-wrapper">
+    <div class="content-section-wrapper">
       <div class="item-wrapper" *ngFor="let item of (keyword.length == 0 ? listBSDUuTien : danhSachBatDongSan); let i=index" >
         <div class="item cursor-pointer" *ngIf="i < soLuongToiDa" [routerLink]="'/bat-dong-san/' + item.id">
           <img [src]="'api/images/' + item.urlHinhDaiDien" [alt]="item.urlHinhDaiDien">
-          <div class="item-content d-flex flex-column">
+          <div class="item-content">
             <div class="ten-tai-san">{{ item.ten }}</div>
-            <div class="gia">{{ item.gia| number }} VNĐ</div>
+            <div class="gia">{{ item.gia | number }} VNĐ</div>
             <div class="dia-chi">{{ item.diaChi }}</div>
             <div class="xem-them mt-auto">Xem chi tiết</div>
           </div>
@@ -26,12 +26,12 @@
     </div>
   </div>
 
-  <div class="content">
-    <div class="content-header d-flex flex-row justify-content-between align-items-center">
-      <div class="header">Động sản</div>
+  <div class="content-section">
+    <div class="content-section-header d-flex flex-row justify-content-between align-items-center">
+      <div class="section-header">Động sản</div>
       <button mat-raised-button color="primary" (click)="navigate('dong-san')">Xem tất cả ({{danhSachDongSan.length}})</button>
     </div>
-    <div class="content-wrapper">
+    <div class="content-section-wrapper">
       <div class="item-wrapper" *ngFor="let item of (keyword.length == 0 ? danhSachDongSanUuTien : danhSachDongSan); let i=index">
         <div class="item cursor-pointer" *ngIf="i < soLuongToiDa" [routerLink]="'/dong-san/' + item.id">
           <img [src]="'api/images/' + item.diaChiHinhAnhDaiDien" [alt]="item.diaChiHinhAnhDaiDien">

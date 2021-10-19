@@ -99,14 +99,14 @@ export class QuanLyDsComponent implements OnInit {
   }
 
   handleImages(id: string) {
-    this.hinhAnhService.cleanFolder('dongsan', id).subscribe(() => {
+    // this.hinhAnhService.cleanFolder('dongsan', id).subscribe(() => {
       //Hình đại diện
       this.hinhAnhService.uploadHinhAnhDaiDien(this.files[0], 'dongsan', id).subscribe();
       //Các hình khác
-      this.otherFiles.forEach((file) => {
-        this.hinhAnhService.uploadHinhAnhKhac(file, 'dongsan', id).subscribe();
-      });
-    })
+    //   this.otherFiles.forEach((file) => {
+    //     this.hinhAnhService.uploadHinhAnhKhac(file, 'dongsan', id).subscribe();
+    //   });
+    // })
   }
 
   onSelectBds(item: DongSan) {

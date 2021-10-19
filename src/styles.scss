@@ -82,3 +82,83 @@ ngx-dropzone {
 .mat-tab-header-pagination-chevron {
   border-color: black;
 }
+
+.content-section {
+  display: grid;
+  grid-template-rows: 80px auto;
+
+  &-header {
+    margin: 0 2px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-image: linear-gradient(90deg, #005689, #006b9b,#007baa,#0078a8,#00588b);
+    padding: 0 26px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    button { height: 40px; }
+
+    .section-header {
+      font-size: 18px;
+      font-weight: 500;
+      color: white;
+      background: transparent;
+    }
+  }
+
+  &-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 2em;
+    row-gap: 2em;
+    margin: 26px;
+
+    .item-wrapper { height: auto; }
+
+    .item {
+      display: grid;
+      grid-template-rows: auto auto;
+      height: 100%;
+
+      img {
+        height: 300px;
+        width: 100%;
+        object-fit: cover;
+        border-radius: 1em;
+        box-shadow: 0 5px 8px 0 rgb(0 0 0 / 20%), 0 3px 10px 0 rgb(0 0 0 / 19%)
+      }
+
+      &-content {
+        margin-top: 15px;
+        display: grid;
+        row-gap: 4px;
+        grid-template-rows: 15px repeat(3, auto);;
+
+        .ten-tai-san {
+          font-weight: 500;
+          font-size: 18px;
+          color: #454545;
+        }
+        .gia {
+          margin-top: 5px;
+          font-weight: bold;
+          font-size: 18px;
+          color: #0275b1;
+          white-space: nowrap;
+        }
+        .dia-chi {
+          margin-top: 5px;
+          font-size: 14px;
+          line-height: 19px;
+          color: #454545;
+        }
+        .xem-them {
+          margin-top: 5px;
+          font-size: 18px;
+          line-height: 19px;
+          color: #0275b1;
+        }
+      }
+
+    }
+  }
+}

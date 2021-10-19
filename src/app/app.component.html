@@ -13,9 +13,10 @@
         <a mat-tab-link routerLink="/bat-dong-san-quan-ly" routerLinkActive="active-tab" *ngIf="isLoggedIn"><mat-icon>apartment</mat-icon>Quản lý BDS</a>
         <a mat-tab-link routerLink="/dong-san-quan-ly" routerLinkActive="active-tab" *ngIf="isLoggedIn"><mat-icon>commute</mat-icon>Quản lý ĐS</a>
         <a mat-tab-link routerLink="/bat-dong-san-sap-xep" routerLinkActive="active-tab" *ngIf="isLoggedIn"><mat-icon>view_agenda</mat-icon>Sắp xếp</a>
+        <a mat-tab-link *ngIf="isLoggedIn" (click)="logout()"><mat-icon>logout</mat-icon>Đăng xuất</a>
      </nav>
      <div>
-       <router-outlet></router-outlet>
+       <router-outlet #o="outlet"></router-outlet>
      </div>
     </div>
   </div>

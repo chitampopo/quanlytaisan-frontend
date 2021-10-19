@@ -16,6 +16,8 @@ export class BatDongSan {
   danhSachUrlHinhAnh?: string[];
   giaBangChu: string = '';
   ghiChu: string = '';
+  dienTichDat?: string;
+  dienTichNha?: string;
 }
 
 @Component({

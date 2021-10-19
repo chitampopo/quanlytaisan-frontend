@@ -4,24 +4,22 @@
     <div class="location">{{ batDongSan.diaChi }} </div>
   </div>
   <div class="content">
-    <!-- <div class="slider"> -->
-      <ngb-carousel>
-        <ng-template ngbSlide *ngFor="let item of batDongSan.danhSachUrlHinhAnh; let i = index;" >
-          <div class="picsum-img-wrapper" (click)="open(i)">
-            <img [src]="'api/images/' + item" [alt]="item" >
-          </div>
-        </ng-template>
-      </ngb-carousel>
-    <!-- </div> -->
+    <ngb-carousel>
+      <ng-template ngbSlide *ngFor="let item of batDongSan.danhSachUrlHinhAnh; let i = index;" >
+        <div class="picsum-img-wrapper" (click)="open(i)">
+          <img [src]="'api/images/' + item" [alt]="item" >
+        </div>
+      </ng-template>
+    </ngb-carousel>
 
     <div class="details">
       <div class="detail-left">
         <div class="top">
           <app-thong-so [title]="'Giá'" [valueNumber]="batDongSan.gia" [valueString]="batDongSan.giaBangChu"></app-thong-so>
-          <app-thong-so [title]="'Diện tích đất'" [valueString]="'100m2'"></app-thong-so>
-          <app-thong-so [title]="'Diện tích nhà'" [valueString]="'100m2'"></app-thong-so>
-          <app-thong-so [title]="'Hướng'" [valueString]="'Tây Nam'"></app-thong-so>
-          <app-thong-so [title]="'Mục đích sử dụng'" [valueString]="'Nhà ở cao cấp'"></app-thong-so>
+          <app-thong-so [title]="'Diện tích đất'" [valueString]="batDongSan.dienTichDat + 'm²'"></app-thong-so>
+          <app-thong-so [title]="'Diện tích nhà'" [valueString]="batDongSan.dienTichNha + 'm²'"></app-thong-so>
+          <app-thong-so [title]="'Hướng'" [valueString]="batDongSan.huong"></app-thong-so>
+          <app-thong-so [title]="'Mục đích sử dụng'" [valueString]="batDongSan.mucDichSuDung"></app-thong-so>
         </div>
 
         <div class="bottom mt-5">
@@ -31,9 +29,9 @@
           </div>
         </div>
       </div>
-      <div class="detail-right">
-        <div class="title">Vị trí</div>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d640.2194504486959!2d105.74287752409016!3d10.02220250025412!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sminh%20tue%20villa!5e0!3m2!1svi!2s!4v1623490240318!5m2!1svi!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      <div class="detail-right" *ngIf=this.center>
+        {{ batDongSan.viTriGoogleMap }}
+        <google-map id="map" [center]="this.center" height="400px" width="100%"></google-map>
       </div>
     </div>
   </div>

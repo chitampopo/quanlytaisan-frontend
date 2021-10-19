@@ -13,6 +13,11 @@ import { BatDongSan } from '../bat-dong-san.component';
 export class ChiTietBatDongSanComponent implements OnInit {
   batDongSan: BatDongSan;
   private _album: IAlbum[] = [];
+  markerOptions: google.maps.MarkerOptions = {
+    draggable: false,
+    animation: google.maps.Animation.DROP,
+  };
+  center: google.maps.LatLng;
 
   constructor(private route: ActivatedRoute, private batDongSanService: BatDongSanService, private title: Title, private _lightbox: Lightbox) { }
 
@@ -33,6 +38,8 @@ export class ChiTietBatDongSanComponent implements OnInit {
             this._album.push(album);
           }
         }
+        const centerSplit = this.batDongSan.viTriGoogleMap.split(',') as string[];
+        this.center = new google.maps.LatLng(parseFloat(centerSplit[0]), parseFloat(centerSplit[1])); ;
       });
     });
   }

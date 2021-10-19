@@ -62,6 +62,8 @@ export class QuanLyBdsComponent implements OnInit {
       danhSachUrlHinhAnh: new FormControl(null),
       giaBangChu: new FormControl(null),
       ghiChu: new FormControl(null),
+      dienTichDat: new FormControl(null),
+      dienTichNha: new FormControl(null),
       viTriGoogleMap: new FormControl(null)
     });
     this.batDongSanService
@@ -79,6 +81,8 @@ export class QuanLyBdsComponent implements OnInit {
       mucDichSuDung: this.myForm.controls.mucDichSuDung.value,
       giaBangChu: this.myForm.controls.giaBangChu.value,
       ghiChu: this.myForm.controls.ghiChu.value,
+      dienTichDat: this.myForm.controls.dienTichDat.value,
+      dienTichNha: this.myForm.controls.dienTichNha.value,
       viTriGoogleMap: this.myForm.controls.viTriGoogleMap.value
     };
     this.batDongSanService
@@ -140,6 +144,8 @@ export class QuanLyBdsComponent implements OnInit {
     this.myForm.controls.id.setValue(bds.id);
     this.myForm.controls.huong.setValue(bds.huong);
     this.myForm.controls.mucDichSuDung.setValue(bds.mucDichSuDung);
+    this.myForm.controls.dienTichDat.setValue(bds.dienTichDat);
+    this.myForm.controls.dienTichNha.setValue(bds.dienTichNha);
     if (bds.urlHinhDaiDien) {
       this.getImage(bds.urlHinhDaiDien).subscribe(data => {
         var filename = bds.urlHinhDaiDien!.replace(/^.*[\\\/]/, '')

@@ -1,9 +1,10 @@
 .wrapper {
   .header {
+    background-image: linear-gradient(90deg, #005689, #006b9b,#007baa,#0078a8,#00588b);
     width: 100%;
-    color: #323E48;
+    color: white;
     text-align: center;
-    margin: 26px;
+    padding: 26px;
 
     .name {
       font-size: 30px;
@@ -14,17 +15,22 @@
     }
   }
   .content {
+    ngb-carousel {
+      background-image: linear-gradient(90deg, #005689, #006b9b,#007baa,#0078a8,#00588b);
+      padding-bottom: 24px;
+    }
     ngb-carousel:focus {
       outline: none;
     }
     ngb-carousel img {
-      height: 500px;
+      height: 50vh;
       object-fit: cover;
       display: block;
       margin-left: auto;
       margin-right: auto;
       width: 50%;
     }
+
     .details {
       margin-top: 26px;
       padding: 0 32px;
@@ -39,6 +45,10 @@
           row-gap: 20px;
           column-gap: 10px;
         }
+      }
+
+      quill-view {
+        font-family: 'Montserrat'
       }
     }
   }
