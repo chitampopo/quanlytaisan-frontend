@@ -3,6 +3,10 @@ import { AbstractControl, FormControl } from '@angular/forms';
 import { ThemePalette } from '@angular/material/core';
 import { Title } from '@angular/platform-browser';
 import { NgxMatColorPickerInput, Color } from '@angular-material-components/color-picker';
+import { HinhAnhService } from '../hinh-anh.service';
+import { ConfigService, ServerConfig } from '../config.service';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-cai-dat',
@@ -23,15 +27,28 @@ export class CaiDatComponent implements OnInit {
     { value: false, label: 'False' }
   ];
 
-
+  allConfigs: ServerConfig[] = [];
   headerFiles: File[] = [];
   footerFiles: File[] = [];
 
-  constructor(private titleService: Title) {
+  constructor(private titleService: Title, private hinhAnhService: HinhAnhService, private configService: ConfigService, private httpClient: HttpClient,) {
     this.titleService.setTitle('Cài đặt');
   }
 
   ngOnInit() {
+
+    this.getImage('banners/HEADER/image').subscribe(data => {
+      // var filename = data.;
+      const file = new File([data], "test.png", { type: data.type });
+      this.headerFiles.push(file);
+    });
+
+    this.getImage('banners/FOOTER/image').subscribe(data => {
+      // var filename = data.;
+      const file = new File([data], "test.png", { type: data.type });
+      this.footerFiles.push(file);
+    });
+
     const mainBgColor = this.hexToRgb('#E5E5E5');
     if(mainBgColor) {
       this.mainBgColorFC.setValue(new Color(mainBgColor.r, mainBgColor.g, mainBgColor.b));
@@ -47,6 +64,7 @@ export class CaiDatComponent implements OnInit {
   onSelectHeader(event: any) {
     this.headerFiles = [];
     this.headerFiles.push(...event.addedFiles);
+    this.hinhAnhService.uploadBanner(this.headerFiles[0], 'HEADER').subscribe();
   }
   onRemoveHeader(event: any) {
     this.headerFiles = [];
@@ -55,6 +73,7 @@ export class CaiDatComponent implements OnInit {
   onSelectFooter(event: any) {
     this.footerFiles = [];
     this.footerFiles.push(...event.addedFiles);
+    this.hinhAnhService.uploadBanner(this.footerFiles[0], 'FOOTER').subscribe();
   }
   onRemoveFooter(event: any) {
     this.footerFiles = [];
@@ -73,4 +92,7 @@ export class CaiDatComponent implements OnInit {
     } : null;
   }
 
+  getImage(imageUrl: string): Observable<Blob> {
+    return this.httpClient.get(`api/images/${imageUrl}`, { responseType: 'blob' });
+  }
 }

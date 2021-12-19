@@ -11,6 +11,11 @@ export class SortResult {
   hidden: SortItem[];
 }
 
+export interface ServerConfig {
+  id: string;
+  key: string;
+  value: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -28,5 +33,9 @@ export class ConfigService {
   updateSort(type: string, key: string, data: SortItem[]): Observable<void> {
     const body = { data };
     return this.http.put<void>(`/api/configs/update-sort/${type}/${key}`, body);
+  }
+
+  getAllConfigs(): Observable<ServerConfig[]> {
+    return this.http.get<ServerConfig[]>('/api/configs');
   }
 }

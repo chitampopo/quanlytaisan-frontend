@@ -29,4 +29,12 @@ export class HinhAnhService {
 
     return this.http.post<void>(`/api/images/upload`, body, { params });
   }
+
+  uploadBanner(file: File, folder: string): Observable<void> {
+    let params = new HttpParams().set('folder', folder);
+    let body = new FormData();
+    body.append("file", file);
+
+    return this.http.post<void>(`/api/images/upload-banners`, body, { params });
+  }
 }
