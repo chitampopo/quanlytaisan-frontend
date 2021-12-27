@@ -5,19 +5,12 @@
   <div class="content">
     <div class="menu-wrapper">
       <nav mat-tab-nav-bar ngClass="tabs">
-        <a mat-tab-link routerLink="/home" routerLinkActive="active-tab"><mat-icon>home</mat-icon>Trang chủ</a>
-        <a mat-tab-link routerLink="/bat-dong-san" routerLinkActive="active-tab"><mat-icon>apartment</mat-icon>Bất động sản</a>
-        <a mat-tab-link routerLink="/dong-san" routerLinkActive="active-tab"><mat-icon>commute</mat-icon>Động sản</a>
-        <a mat-tab-link routerLink="/ban-do" routerLinkActive="active-tab"><mat-icon>place</mat-icon>Bản đồ</a>
-        <a mat-tab-link routerLink="/cai-dat" routerLinkActive="active-tab" *ngIf="isLoggedIn"><mat-icon>settings</mat-icon>Cài đặt</a>
-        <a mat-tab-link routerLink="/bat-dong-san-quan-ly" routerLinkActive="active-tab" *ngIf="isLoggedIn"><mat-icon>apartment</mat-icon>Quản lý BDS</a>
-        <a mat-tab-link routerLink="/dong-san-quan-ly" routerLinkActive="active-tab" *ngIf="isLoggedIn"><mat-icon>commute</mat-icon>Quản lý ĐS</a>
-        <a mat-tab-link routerLink="/bat-dong-san-sap-xep" routerLinkActive="active-tab" *ngIf="isLoggedIn"><mat-icon>view_agenda</mat-icon>Sắp xếp</a>
+        <a *ngFor="let menu of menuItems" mat-tab-link [routerLink]="menu.link" routerLinkActive="active-tab"><mat-icon>{{menu.icon}}</mat-icon>{{menu.title}}</a>
         <a mat-tab-link *ngIf="isLoggedIn" (click)="logout()"><mat-icon>logout</mat-icon>Đăng xuất</a>
      </nav>
-     <div>
-       <router-outlet #o="outlet"></router-outlet>
-     </div>
+    </div>
+    <div>
+      <router-outlet #o="outlet"></router-outlet>
     </div>
   </div>
   <div class="footer mt-auto">

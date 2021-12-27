@@ -11,9 +11,9 @@
       <mat-label>Mật khẩu</mat-label>
       <input matInput type="password" formControlName="password" required="required">
     </mat-form-field>
-    <div mat-dialog-actions align="end">
+    <div mat-dialog-actions class="d-flex" [ngClass]="{'justify-content-between': isShowLoginFailMessage, 'justify-content-end': !isShowLoginFailMessage}">
+      <span *ngIf="isShowLoginFailMessage" class="error">Đăng nhập thất bại, xin thử lại</span>
       <button mat-flat-button color="primary">Đăng nhập</button>
     </div>
-    <span *ngIf="isShowLoginFailMessage" class="error">Đăng nhập thất bại, xin thử lại</span>
   </form>
 </div>

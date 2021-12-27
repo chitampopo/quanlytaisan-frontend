@@ -5,8 +5,8 @@
 
   <input type="text" ng-model="firstname" placeholder="Khu vực, dự án, địa điểm" [(ngModel)]="keyword" (ngModelChange)="modelChanged($event)">
   <select (change)="sortChange($event.target.value)">
-    <option value="high-to-low">Giá cao đến thấp</option>
-    <option value="low-to-high">Giá thấp đến cao</option>
+    <option value="high-to-low">▼ Giá giảm dần</option>
+    <option value="low-to-high">▲ Giá tăng dần</option>
   </select>
   <button (click)="openDialog()">Tìm kiếm nâng cao</button>
 </div>

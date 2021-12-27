@@ -1,3 +1,5 @@
+@import 'variable';
+
 .homepage-wrapper {
   background: white;
   color: black;
@@ -6,13 +8,13 @@
   min-height: 100%;
 
   img {
-    height: 300px;
+    height: $banner-top-height;
     width: 100%;
     object-fit: cover;
   }
 
   .footer {
-    height: 150px;
+    height: $banner-bottom-height;
     overflow: hidden;
     text-align: center;
     font-size: 18px;

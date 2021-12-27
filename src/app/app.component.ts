@@ -1,40 +1,17 @@
-import { trigger, transition, query, style, animate, group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { LightboxConfig } from 'ngx-lightbox';
-import { Subject } from 'rxjs';
 import { AuthenService } from './authen.service';
-
+import { USER_MENU, ADMIN_MENU } from '../app/menu-items'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  // animations: [
-  //   trigger('myAnimation', [
-  //     transition('* <=> *', [
-  //       query(':enter, :leave', style({ position: 'fixed', width:'100%' })),
-  //       group([
-  //         query(':enter', [
-  //           style({ transform: 'translateX(100%)' }),
-  //           animate('0.2s ease-in-out', style({ transform: 'translateX(0%)' }))
-  //         ]),
-  //         query(':leave', [
-  //           style({ transform: 'translateX(0%)' }),
-  //           animate('0.2s ease-in-out', style({ transform: 'translateX(-100%)' }))]),
-  //       ])
-  //     ])
-  // ])]
 })
 export class AppComponent implements OnInit {
   title = 'Quản lý tài sản';
   isLoggedIn = false;
+  menuItems = USER_MENU;
 
-  constructor(private _lightboxConfig: LightboxConfig, private authenService: AuthenService) {
-    // override default config
-    _lightboxConfig.fadeDuration = 1;
-    _lightboxConfig.showZoom = true;
-    _lightboxConfig.showRotate = true;
-    _lightboxConfig.albumLabel = "Hình %1 / %2";
-
+  constructor(private authenService: AuthenService) {
     this.authenService.observeLogin().subscribe(
       () => {
         if(localStorage.getItem('isAuthen')) {
@@ -47,6 +24,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     if(localStorage.getItem('isAuthen')) {
       this.isLoggedIn = true;
+      this.menuItems = ADMIN_MENU;
     }
   }
 
